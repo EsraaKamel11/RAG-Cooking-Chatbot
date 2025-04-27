@@ -34,7 +34,7 @@ jobs:
       run: python build_index.py
 
     - name: Upload FAISS Index as Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: recipe-faiss-index
         path: recipe_faiss_index/
