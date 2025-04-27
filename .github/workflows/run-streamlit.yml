@@ -25,13 +25,14 @@ jobs:
     - name: Set up Environment Variables
       run: echo "GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY }}" >> $GITHUB_ENV
 
-    - name: Start Streamlit app with ngrok
+    - name: Start Streamlit app and expose with ngrok
       run: |
-        #pip install ngrok
-        #ngrok config add-authtoken $NGROK_AUTH_TOKEN
+        wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+        unzip ngrok-stable-linux-amd64.zip
+        ./ngrok authtoken $NGROK_AUTH_TOKEN
         streamlit run app.py &
-        #sleep 10
-        #ngrok http 8501 > /dev/null &
-        #sleep 10
-        #curl http://localhost:4040/api/tunnels
+        sleep 10
+        ./ngrok http 8501 > /dev/null &
+        sleep 10
+        curl http://localhost:4040/api/tunnels
 
