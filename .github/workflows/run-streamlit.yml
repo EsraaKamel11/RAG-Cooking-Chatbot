@@ -28,6 +28,8 @@ jobs:
     - name: Start Streamlit app with ngrok
       run: |
         echo "from pyngrok import ngrok" > expose.py
+        echo "import os" >> expose.py
+        echo "ngrok.set_auth_token(os.getenv('NGROK_AUTH_TOKEN'))" >> expose.py
         echo "public_url = ngrok.connect(8501)" >> expose.py
         echo "print('Public URL:', public_url)" >> expose.py
         streamlit run app.py & python3 expose.py
