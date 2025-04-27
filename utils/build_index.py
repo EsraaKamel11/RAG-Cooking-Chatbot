@@ -1,8 +1,7 @@
-import faiss
 import os
 import pickle
-from langchain.vectorstores import FAISS
-from langchain.embeddings import GoogleGenerativeAIEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 def build_faiss_index(documents, embedding_model, save_path="recipe_faiss_index"):
     vectorstore = FAISS.from_documents(documents, embedding_model)
@@ -12,3 +11,4 @@ def build_faiss_index(documents, embedding_model, save_path="recipe_faiss_index"
 
 def load_faiss_index(embedding_model, load_path="recipe_faiss_index"):
     return FAISS.load_local(load_path, embedding_model)
+
