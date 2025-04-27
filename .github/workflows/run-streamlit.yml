@@ -28,8 +28,8 @@ jobs:
     
     - name: Start Streamlit app and expose with ngrok
       run: |
-        wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-        unzip ngrok-stable-linux-amd64.zip
+        wget https://bin.ngrok.com/ngrok-v3-stable-linux-amd64.tgz
+        tar -xvzf ngrok-v3-stable-linux-amd64.tgz
         export NGROK_AUTH_TOKEN=${{ secrets.NGROK_AUTH_TOKEN }}
         ./ngrok authtoken $NGROK_AUTH_TOKEN
         streamlit run app.py &
@@ -37,6 +37,7 @@ jobs:
         ./ngrok http 8501 &
         sleep 15
         curl http://localhost:4040/api/tunnels
+
 
 
 
