@@ -1,9 +1,10 @@
 streamlit
 langchain
+langchain-community
+langchain-google-genai
 faiss-cpu
 google-generativeai
-langchain-google-genai
-langchain-community
+pypdf
 python-dotenv
 PyPDF2
 tqdm
