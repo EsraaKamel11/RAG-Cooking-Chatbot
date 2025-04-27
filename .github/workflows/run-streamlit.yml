@@ -27,9 +27,11 @@ jobs:
 
     - name: Start Streamlit app with ngrok
       run: |
-        echo "from pyngrok import ngrok" > expose.py
-        echo "import os" >> expose.py
-        echo "ngrok.set_auth_token(os.getenv('NGROK_AUTH_TOKEN'))" >> expose.py
-        echo "public_url = ngrok.connect(8501)" >> expose.py
-        echo "print('Public URL:', public_url)" >> expose.py
-        streamlit run app.py & python3 expose.py
+        pip install ngrok
+        ngrok config add-authtoken $NGROK_AUTH_TOKEN
+        streamlit run app.py &
+        sleep 10
+        ngrok http 8501 > /dev/null &
+        sleep 10
+        curl http://localhost:4040/api/tunnels
+
