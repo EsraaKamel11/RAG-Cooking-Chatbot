@@ -27,11 +27,11 @@ jobs:
 
     - name: Start Streamlit app with ngrok
       run: |
-        pip install ngrok
-        ngrok config add-authtoken $NGROK_AUTH_TOKEN
+        #pip install ngrok
+        #ngrok config add-authtoken $NGROK_AUTH_TOKEN
         streamlit run app.py &
-        sleep 10
-        ngrok http 8501 > /dev/null &
-        sleep 10
-        curl http://localhost:4040/api/tunnels
+        #sleep 10
+        #ngrok http 8501 > /dev/null &
+        #sleep 10
+        #curl http://localhost:4040/api/tunnels
 
