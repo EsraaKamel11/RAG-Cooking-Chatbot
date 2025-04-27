@@ -1,3 +1,4 @@
+import os
 from utils.load_docs import load_documents, clean_text, split_text
 from utils.build_index import build_faiss_index
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
